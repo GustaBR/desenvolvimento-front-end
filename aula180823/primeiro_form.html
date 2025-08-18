@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <!-- Formulário -->
+    <form>
+
+        <!-- Campo de texto para primeiro nome -->
+        <label>
+            Primeiro nome: </label>
+            <input id="primeiroNome" type="text">
+        </label>
+
+        <!-- Campo de texto para sobrenome -->
+        <label>
+            Sobrenome:
+            <input id="sobrenome" type="text">
+        </label>
+
+        <!-- Campo de texto para email -->
+        <label>
+            Email:
+            <input id="email" type="email">
+        </label>
+        
+        <!-- Campo de texto para telefone -->
+        <label>
+            Telefone:
+            <input id="telefone" type="tel">
+        </label>
+
+        <!-- Escolha de uma cor -->
+         <label>
+            Cor:
+            <input id="cor" type="color">
+         </label>
+
+        <!-- Escolha de um arquivo -->
+         <label>
+            Arquivo:
+            <input id="arquivo" type="file">
+         </label>
+
+        <!-- Área de Texto; cols = largura e rows = altura -->
+        <label>
+            Sua Mensagem:
+            <textarea id="mensagem" cols="35" rows="10"></textarea>
+        </label>
+
+        <!-- Botão para envio do formulário -->
+        <input type="submit" value="Enviar">
+
+        <!-- Seleção de uma opção entre possíveis opções -->
+        <label>
+            Estado:
+            <select id="estado">
+                <option>São Paulo</option>
+                <option>Rio de Janeiro</option>
+                <option>Minas Gerais</option>
+                <option>Espírito Santo</option>
+            </select>
+        </label>
+        
+        <!-- Escolhas  -->
+        <fieldset>
+            <legend>Escolha um veículo</legend>
+            <input type="radio" name="veiculo" id="X1">
+            <label for="X1">X1</label>
+
+            <input type="radio" name="veiculo" id="XC60">
+            <label for=""XC60>XC60</label>
+
+            <input type="radio" name="veiculo" id="Q5">
+            <label for="Q5">Q5</label>
+            
+            <input type="radio" name="veiculo" id="Discovery">
+            <label for="Discovery">Discovery</label>
+
+            <input type="radio" name="veiculo">
+            <label for="Taycan">Taycan</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>De quais cores você gosta?</legend>
+
+            <input id="vermelho" type="checkbox" name="cor">
+            <label for="vermelho">Vermelho</label>
+
+            <input id="amarelo" type="checkbox" name="cor">
+            <label for="amarelo">Amarelo</label>
+
+            <input id="preto" type="checkbox" name="cor">
+            <label for="preto">Preto</label>
+        </fieldset>
+    </form>
+</body>
+</html>
