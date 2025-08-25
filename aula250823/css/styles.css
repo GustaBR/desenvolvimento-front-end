@@ -1,0 +1,16 @@
+h1 {
+    color: green;
+}
+strong {
+    color: red;
+}
+
+#titulo{
+    color: yellow;
+    text-align: center;
+}
+
+/* Estilização condicional composta (tag <p></p> e id="descricao") */
+p#descricao{
+    color: blue;
+}
