@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletores Descendentes</title>
+
+    <style>
+        /* Seletor descendente */
+        /* Pegamos todos os <p> que sejam filhos diretos ou indiretos de um article */
+
+            article p{
+                padding: 12px;
+                background-color: lightgray;
+            }
+
+        /* Todo <p> que tenha class="promocao" e que seja descendente de um elemento com id="principal" */
+        /* Seletor descendente = espaço */
+        /* Operador AND = nenhum operador explícito */
+
+            #principal p.promocao{
+                padding: 12px;
+                background-color: aliceblue;
+            }
+        
+            /* Todas as tags <p> com class="coordenadores" descendentes de section descendentes de article */
+            /* em uma tag com id="article" dentro de uma tag body */
+                body #principal article section p.coordenadores{
+                    text-align: center;
+                }
+            
+            /* Estilizando filhos diretos de article do tipo <p> */
+                article > p{
+                    border: 1px solid black;
+                }
+
+            main > article section > p.coordenadores{
+                font-weight: bold;
+            }
+    </style>
+</head>
+
+<body>
+    <main id="principal">
+        <h1 id="titulo" class="promocao">Portal de Cursos</h1>
+        <!-- Estilização por ID prevalece -->
+        <p id="descricao">Temos cursos nas mais diversas áreas</p>
+        <p class="promocao nova">
+            Venha conversar conosco e conhecer nossas ofertas de
+            <strong>bolsas de estudo</strong>
+        </p>
+
+        <article>
+            <!-- Filho direto de article: -->
+            <!-- Todas as tags aninhadas em article em **1 nível** -->
+
+            <!-- Todos os parágrafos abaixo são filhos diretos de article -->
+            <p> Cursos: </p>
+            <p class="novo-curso">Ciência da Computação</p>
+            <p class="curso">Engenharia de Produção</p>
+            <p class="curso">Farmácia</p>
+            <!-- A tag <section> abaixo é filha direta de article -->
+            <section>
+                <!-- A tag <p> abaixo não é filha direta de article, porque é aninhada em <section> -->
+                <!-- que por sua vez é aninhada em article e portanto filha direta de article -->
+                <p class="coordenadores">
+                    Saiba que nossos coordenadores estão à disposição.
+                </p>
+            </section>
+        </article>
+    </main>
+    <p id="contato" class="final-pagina">
+        Entre em contato: 11 40028922
+    </p>
+
+    <p id="rodape" class="final-pagina">
+        &copy; Todos os direitos reservados.
+    </p>
+</body>
+</html>

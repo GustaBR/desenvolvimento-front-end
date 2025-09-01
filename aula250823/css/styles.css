@@ -1,16 +1,45 @@
-h1 {
+/* p{
+    color: red
+} */
+
+/* #titulo {
     color: green;
+    text-align: center
+} */
+
+/* Estiliza textos cuja tag é do tipo <p> e ID é igual a "descricao" */
+p#descricao{
+    color: blue
 }
-strong {
+
+/* Seletor por classe */
+p.promocao{
+    text-align: center;
+    background-color: lightgreen
+}
+
+h1.promocao{
+    color: yellow
+}
+
+.nova{
+    color: white
+}
+
+p.final-pagina#rodape{
+    background-color: lightgray;
+    text-align: center;
+}   
+
+.curso, .novo-curso{
+    background-color: aliceblue
+}
+
+.novo-curso{
     color: red;
 }
 
-#titulo{
-    color: yellow;
-    text-align: center;
-}
-
-/* Estilização condicional composta (tag <p></p> e id="descricao") */
-p#descricao{
-    color: blue;
+.curso, .novo-curso, #contato{
+    padding: 12px;
+    border: 1px solid lightgray;
 }
