@@ -1,0 +1,26 @@
+/* p{
+    color: red !important;
+} */
+
+/* Seletor por id (+100 pts) */
+#titulo{
+    color: blue;
+}
+
+/* Seletor por classe (+10 pts) */
+.descricao{
+    color: green;
+}
+
+/* Seletor por tipo (+1 pts) */
+p{
+    color: red;   
+}
+
+.principal article{
+    background-color: lightblue;
+}
+
+main, article{
+    background-color: beige;
+}
