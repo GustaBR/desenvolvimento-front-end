@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Box Model </title>
+
+    <style>
+        body{
+            margin: 0px;
+        }
+
+        .caixa1, .caixa2{
+            width: 300px;
+            text-align: justify;
+            background-color: #CCC;
+            border: 1px solid black;
+        }
+
+        .rodape{
+            background-color: aliceblue;
+            padding: 12px;
+            border: 1px solid black;
+            text-align: center
+        }
+
+        .caixa1{
+            border: 5px solid black;
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <p class="caixa1">
+            MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO 
+        </p>
+        <p class="caixa2">
+            MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO MAGUETTE ESTÁ RECTO 
+        </p>
+        <footer class="rodape"> Volte sempre! </footer>
+    </article>
+</body>
+</html>
