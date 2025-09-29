@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Row Bootstrap</title>
+
+    <!-- Importando o código CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+    crossorigin="anonymous">
+</head>
+<body>
+    <!-- Importando o código JavaScript do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+    <div class="container mt-2 p-5 border">
+        <!-- Uma linha com um único elemento ocupando todo o espaço (12 colunas) -->
+        <div class="row">
+            <div class="col-12 border">
+                12 colunas
+            </div>
+        </div>
+
+        <!-- Uma linha com um único elemento ocupando duas colunas -->
+        <div class="row">
+            <div class="col-2 mt-2 border">
+                2 colunas
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mt-2 border">
+                sm:12, md:6
+            </div>
+            <div class="col-sm-12 col-md-6 mt-2 border">
+                sm:12, md:6
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-5 mt-2 border">
+                sm:12, md:4, lg:5
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mt-2 border">
+                sm:12, md:4, lg:4
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col border mt-2">
+                largura igual sem empilhar
+            </div>
+            <div class="col border mt-2">
+                largura igual sem empilhar
+            </div>
+            <div class="col border mt-2">
+                largura igual sem empilhar
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md border mt-2">
+                md
+            </div>
+
+            <div class="col-md border mt-2">
+                md
+            </div>
+
+            <div class="col-md border mt-2">
+                md
+            </div>
+        </div>
+
+        <!-- Utilização do order -->
+        <div class="row">
+            <div class="col-4 border mt-2 order-2">
+                Sou a segunda div a ser mostrada, e a primeira a ser escrita
+            </div>
+            <div class="col-4 border mt-2 order-3">
+                Sou a terceira div a ser mostrada, e a segunda a ser escrita
+            </div>
+            <div class="col-4 border mt-2 order-1">
+                Sou a primeira div a ser mostrada, e a terceira a ser escrita
+            </div>
+        </div>
+
+        <!-- Exemplo offset -->
+        <div class="row">
+            <div class="border my-2 col-md-6 offset-md-3">
+                col:6, off:3
+            </div>
+        </div>
+
+        <div class="row align-items-start border bg-light" style="height:200px">
+            <div class="col border">
+                top (start de cima para baixo)
+            </div>
+
+            <div class="col border">
+                top (start de cima para baixo)
+            </div>
+        </div>
+
+        <div class="row align-items-center border bg-light" style="height:200px">
+            <div class="col border">
+                center
+            </div>
+
+            <div class="col border">
+                center
+            </div>
+        </div>
+
+        <!-- Testes flex direction -->
+        <div class="row">
+            <!-- Direção padrão -->
+            <div class="d-flex bg-light border my-2">
+                <div class="p-4 border mx-2">1</div>
+                <div class="p-4 border mx-2">2</div>
+                <div class="p-4 border mx-2">3</div>
+            </div>
+
+            <!-- Direção inversa -->
+            <div class="d-flex flex-row-reverse bg-light border my-2">
+                <div class="p-4 border mx-2">1</div>
+                <div class="p-4 border mx-2">2</div>
+                <div class="p-4 border mx-2">3</div>
+            </div>
+
+            <!-- Padrão column cima para baixo -->
+            <div class="d-flex flex-column bg-light border my-2">
+                <div class="p-4 border mx-2">1</div>
+                <div class="p-4 border mx-2">2</div>
+                <div class="p-4 border mx-2">3</div>
+            </div>
+
+            <!-- Padrão column baixo para cima -->
+            <div class="d-flex flex-column-reverse bg-light border my-2">
+                <div class="p-4 border mx-2">1</div>
+                <div class="p-4 border mx-2">2</div>
+                <div class="p-4 border mx-2">3</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
