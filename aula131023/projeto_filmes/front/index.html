@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body onload="obterFilmes()">
+    <!-- Script em JS -->
+    <script src="js/script.js"></script>
+    <!-- Importando o axios via CDN -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-4">
+                <!-- Campos de texto -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="titulo-input"
+                    placeholder="Título do Filme">
+                    <label for="titulo-input">Título do Filme</label>
+                    
+                </div>
+            </div>
+
+            <div class="col-md-8 col-lg-4">
+                <!-- Campos de texto -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="sinopse-input"
+                    placeholder="Sinopse do Filme">
+                    <label for="sinopse-input">Sinopse do Filme</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de cadastro -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <button class="btn btn-outline-primary w-100" onclick="cadastrarFilme()">
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-stripped table-hover text-center filmes">
+                    <thead>
+                        <!-- Header da Tabela -->
+                        <tr>
+                            <th>Título</th>
+                            <th>Sinopse</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- Lista de filmes -->
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

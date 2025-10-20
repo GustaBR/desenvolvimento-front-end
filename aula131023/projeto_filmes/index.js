@@ -1,7 +1,11 @@
 // Constante express carrega uma função que carrega as funções do pacote 'express'
 const express = require('express')
+// Carregamos também o pacote cors em uma constante
+const cors = require('cors')
 // Com a chamada da função express, as funções do pacote são carregadas em app
 const app = express()
+app.use(express.json());
+app.use(cors())
 
 
 // Criamos um endpoint (padrão de acesso), ou seja, um endereço por onde nosso
@@ -36,8 +40,6 @@ let filmes = [
 app.get('/filmes', (req, res) => {
     res.json(filmes)
 })
-
-app.use(express.json());
 
 // Requisição do tipo post, ou seja, o cliente também envia informações além de receber uma resposta
 app.post('/filmes', (req, res) => {
