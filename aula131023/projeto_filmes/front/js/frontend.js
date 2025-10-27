@@ -8,7 +8,6 @@ const filmesEndpoint = "/filmes"
 async function obterFilmes() {
     const URLCompleta = `${protocolo}${baseURL}${filmesEndpoint}`
     const filmes = (await axios.get(URLCompleta)).data
-    console.log(filmes)
     
     // document representa a árvore DOM da página
     // querySelector pega uma das tags existentes na
@@ -51,31 +50,51 @@ async function cadastrarFilme() {
     let titulo = tituloInput.value
     let sinopse = sinopseInput.value
 
-    // Limpando os valores dos campos
-    tituloInput.value = ""
-    sinopseInput.value = ""
+    if (titulo && sinopse){
+        // Limpando os valores dos campos
+        tituloInput.value = ""
+        sinopseInput.value = ""
 
-    // Enviamos os dados do filme para serem cadastrados no back end (servidor)
-    // O back end faz o cadastro e retorna a lista de filmes
-    // Atualizada que guardamos na constante "filmes"
-    const filmes = (await axios.post(URLCompleta, {titulo, sinopse})).data
+        // Enviamos os dados do filme para serem cadastrados no back end (servidor)
+        // O back end faz o cadastro e retorna a lista de filmes
+        // Atualizada que guardamos na constante "filmes"
+        const filmes = (await axios.post(URLCompleta, {titulo, sinopse})).data
 
-    // Identificamos a tag referente à tabela de filmes a partir da sua classe
-    let tabela = document.querySelector(".filmes")
-    
-    // Percore as filhas da tabela para identificar a tag de nome "tbody"
-    let corpoTabela = tabela.getElementsByTagName("tbody")[0]
-    
-    // Limpamos o conteúdo atual da tabela
-    corpoTabela.innerHTML = ""
+        // Identificamos a tag referente à tabela de filmes a partir da sua classe
+        let tabela = document.querySelector(".filmes")
 
-    // Atualizar a tabela considerando o novo filme cadastrado
-    for(let filme of filmes) {
-        let linha = corpoTabela.insertRow(0)
-        let celulaTitulo = linha.insertCell(0)
-        let celulaSinopse = linha.insertCell(1)
-        celulaTitulo.innerHTML = filme.titulo
-        celulaSinopse.innerHTML = filme.sinopse
+        // Percore as filhas da tabela para identificar a tag de nome "tbody"
+        let corpoTabela = tabela.getElementsByTagName("tbody")[0]
+
+        // Limpamos o conteúdo atual da tabela
+        corpoTabela.innerHTML = ""
+
+        // Atualizar a tabela considerando o novo filme cadastrado
+        for(let filme of filmes) {
+            let linha = corpoTabela.insertRow(0)
+            let celulaTitulo = linha.insertCell(0)
+            let celulaSinopse = linha.insertCell(1)
+            celulaTitulo.innerHTML = filme.titulo
+            celulaSinopse.innerHTML = filme.sinopse
+
+        }
+
+    } else {
+        // Variável alert fuarda o índice da tag que contém a classe alert
+        let alert = document.querySelector(".alert")
+        
+        // Adicionamos ao elemento a classe "show" que o torna visível
+        alert.classList.add("show")
+
+        // Removendo a classe "d-none" que torna o elemento invisível
+        alert.classList.remove("d-none")
+
+        // .setTimeout recebe 2 parâmetros. O primeiro é uma função que deve ser executada.
+        // O segundo é o tempo em ms de espera antes da função ser executada.
+        setTimeout(() => {
+            alert.classList.remove("show")
+            alert.classList.add("d-node")
+        }, 4000)
     }
 }
 
