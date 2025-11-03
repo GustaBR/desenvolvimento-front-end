@@ -2,10 +2,11 @@
 // http://localhost:3000/filmes
 const protocolo = "http://"
 const baseURL = "localhost:3000"
-const filmesEndpoint = "/filmes"
 
 // async = Função assíncrona, ou seja, ela não 
 async function obterFilmes() {
+
+    const filmesEndpoint = "/filmes"
     const URLCompleta = `${protocolo}${baseURL}${filmesEndpoint}`
     const filmes = (await axios.get(URLCompleta)).data
     
@@ -38,6 +39,8 @@ async function obterFilmes() {
 // Cadastrar um novo filme. A requisição é enviada do
 // Cliente (front end) para o servidor (back end) da aplicação
 async function cadastrarFilme() {
+
+    const filmesEndpoint = "/filmes"
     const URLCompleta = `${protocolo}${baseURL}${filmesEndpoint}`
 
     // Pegamos o índice dos dois campos de texto da árvore DOM
@@ -76,7 +79,6 @@ async function cadastrarFilme() {
             let celulaSinopse = linha.insertCell(1)
             celulaTitulo.innerHTML = filme.titulo
             celulaSinopse.innerHTML = filme.sinopse
-
         }
 
     } else {
@@ -98,4 +100,27 @@ async function cadastrarFilme() {
     }
 }
 
+// Programando o envio da requisição do tipo POST para
+// Cadastrar um usuário. A requisição é enviada do
+// Cliente (front end) para o servidor (back end) da aplicação.
+async function cadastrarUsuario() {
+    let usuarioCadastroInput = document.querySelector("#usuarioCadastroInput")
+    let passwordCadastroInput = document.querySelector("#passwordCadastroInput")
 
+    let usuarioCadastro = usuarioCadastroInput.value
+    let passwordCadastro = passwordCadastroInput.value
+
+    if(usuarioCadastro && passwordCadastro) {
+        // Envio da requisição POST para o endpoint "/signup"
+    } else {
+        let alert = document.querySelector(".alert-modal-cadastro")
+        alert.innerHTML = "Preencha todos os campos."
+        alert.classList.add("show", "alert-danger")
+        alert.classList.remove("d-none")
+        
+        setTimeout(() => {
+            alert.classList.remove("show")
+            alert.classList.add('d-none')
+        }, 3000)
+    }
+}

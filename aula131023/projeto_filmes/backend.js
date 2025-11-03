@@ -10,11 +10,14 @@ app.use(cors())
 require("dotenv").config()
 
 // Carregamos as funções do mongoose para uma constante
-const mongoose = require("mongoose")
-const uniqueValidator = require("mongoose-unique-validator")
+const mongoose = require('mongoose')
+const uniqueValidator = require('mongoose-unique-validator')
 
-// Carregando as funçõesdo bcrypt
-const bcrypt = require("bcrypt")
+// Carregando as funções do pacote bcrypt
+const bcrypt = require('bcrypt')
+
+// Carregando as funções do pacote jsonwebtoken para jwt
+const jwt = require('jsonwebtoken')
 
 // Parâmetros do método model: (nome, estrutura) do Schema
 const Filme = mongoose.model("Filme", mongoose.Schema({
@@ -131,4 +134,40 @@ app.post("/signup", async (req, res) => {
 app.get("/usuarios", async (req, res) => {
     const usuarios = await Usuario.find()
     res.json(usuarios)
+})
+
+
+// Por padrão o servidor do Node.js executa em localhost e na porta 3000 (especificada no código)
+// Portanto, o endpoint abaixo está no endereço localhost:3000/login
+
+// Requisição HTTP do tipo POST permite receber informações, além de enviar uma resposta
+app.post("/login", async (req, res) => {
+    
+    // Recebendo o login e senha enviados 
+    const login = req.body.login
+    const password = req.body.password
+
+    // Verificando se o usuário (login e senha) existe na base de dados do MongoDB
+    const u = await Usuario.findOne({login: login})
+
+    if(!u) {
+        // Se não foi encontrada uma correspondência, retornar erro 401: Unauthorized
+        return res.status(401).json({mensagem: "login inválido"})
+    }
+
+    // Se o usuário é válido, comparamos a senha para descriptografá-la
+    // O método compare compara a senha inserida com a armazenada no banco descriptografada
+    const senhaValida = await bcrypt.compare(password, u.password)
+    if(!senhaValida) {
+        // Erro 401: Unauthorized
+        return res.status(401).json({mensagem: "senha inválida"})
+    }
+
+    const token = jwt.sign(
+        {login: login}, // Identifica qual usuário receberá a validação do Token
+        // Depois mudaremos para uma chave verdadeiramente secreta
+        "chave-secreta",
+        {expiresIn: "1h"} // Tempo de validade do Token
+    )
+    res.status(200).json({token: token})
 })
