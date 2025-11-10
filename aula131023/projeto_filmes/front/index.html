@@ -22,6 +22,59 @@
     src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Define uma modal com id="modalCadadstro", modal é uma nova tela que aparece por cima da existente -->
+    <div class="modal fade" id="modalLogin" aria-labelledby="modalLogin" aria-hidden="true">
+        
+        <!-- modal-dialog é a janela da modal em si -->
+        <div class="modal-dialog">
+
+            <!-- Conteúdo da modal -->
+            <div class="modal-content">
+                
+                <!-- modal-header é o cabeçalho do conteúdo -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Login de Usuário</h1>
+                </div>
+
+                <!-- modal-body é o corpo da janela -->
+                <div class="modal-body">
+                    <!-- Utilizaremos este alerta posteriormente -->
+                    <div class="d-none alert alert-dismissible fade alert-modal-login" role="alert"></div>
+
+                    <!-- Formulário para entrada de login/senha -->
+                    <form>
+
+                        <!-- Rótulo e campo de texto para o login -->
+                        <div class="mb-3">
+                            <label for="usuarioLoginInput" class="col-form-label">Usuário</label>
+                            <input type="text" id="usuarioLoginInput" class="form-control">
+                        </div>
+
+                        <!-- Rótulo e campo de texto para a senha -->
+                        <div class="mb-3">
+                            <label for="passwordLoginInput" class="col-form-label">Senha</label>
+                            <input type="password" id="passwordLoginInput" class="form-control">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- modal-footer é o rodapé da janela -->
+                <div class="modal-footer">
+                    
+                    <!-- Botão Cancelar (fecha a modal aberta) -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <!-- Botão Login (chama a função que valida um usuário ao clicar) -->
+                     <button type="button" class="btn btn-primary" onclick="fazerLogin()">
+                        Login
+                     </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="modalCadastro" aria-labelledby="modalCadastro" aria-hidden="true">
         
         <!-- modal-dialog é a janela da modal em si -->
@@ -96,7 +149,8 @@
                     <!-- Div que irá expandir/contrair de acordo com o clique do botão -->
                     <div class="collapse navbar-collapse" id="myNav">
                         <div class="navbar-nav ms-auto">
-                            <a class="nav-link active me-2" aria-current="page" href="#">Login</a>
+                            <a class="nav-link active me-2" aria-current="page" href="#"
+                            data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
                             <a class="nav-link active me-2" aria-current="page" href="#"
                             data-bs-toggle="modal" data-bs-target="#modalCadastro">Novo usuário</a>
                         </div>
@@ -110,9 +164,8 @@
         
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="d-none alert alert-danger alert-dismissible fade" role="alert">
-                    Preencha todos os campos.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="d-none alert alert-dismissible fade alert-filme" role="alert">
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->                     
                 </div>
             </div>
         </div>
@@ -141,7 +194,7 @@
         <!-- Botão de cadastro -->
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <button class="btn btn-outline-primary w-100" onclick="cadastrarFilme()">
+                <button id="cadastrarFilmeButton" class="btn btn-outline-primary w-100" onclick="cadastrarFilme() " disabled>
                     Cadastrar
                 </button>
             </div>

@@ -65,7 +65,7 @@ app.get('/hey', (req, res) => {
 app.listen(3000, () => {
     try {
         conectarAoMongoDB()
-        console.log("Up and running!")
+        console.log("Up and running! (PORT: 3000)")
     } catch (error) {
         console.log("Erro:", error)
     }

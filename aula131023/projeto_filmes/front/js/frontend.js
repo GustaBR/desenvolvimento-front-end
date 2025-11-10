@@ -81,22 +81,14 @@ async function cadastrarFilme() {
             celulaSinopse.innerHTML = filme.sinopse
         }
 
+        exibirAlerta(".alert-filme", "Filme cadastrado com sucesso",
+            ["show", "alert-success"], ["d-none", "alert-danger"], 2000
+        )
+
     } else {
-        // Variável alert fuarda o índice da tag que contém a classe alert
-        let alert = document.querySelector(".alert")
-        
-        // Adicionamos ao elemento a classe "show" que o torna visível
-        alert.classList.add("show")
-
-        // Removendo a classe "d-none" que torna o elemento invisível
-        alert.classList.remove("d-none")
-
-        // .setTimeout recebe 2 parâmetros. O primeiro é uma função que deve ser executada.
-        // O segundo é o tempo em ms de espera antes da função ser executada.
-        setTimeout(() => {
-            alert.classList.remove("show")
-            alert.classList.add("d-node")
-        }, 4000)
+        exibirAlerta(".alert-filme", "Preencha todos os campos",
+            ["show", "alert-danger"], ["d-none", "alert-success"], 2000
+        )
     }
 }
 
@@ -112,15 +104,97 @@ async function cadastrarUsuario() {
 
     if(usuarioCadastro && passwordCadastro) {
         // Envio da requisição POST para o endpoint "/signup"
+        try {
+            const cadastroEndpoint = "/signup"
+            const URLCompleta = `${protocolo}${baseURL}${cadastroEndpoint}` // URLCompleta === "https://localhost:3000/signup"
+            
+            await axios.post(URLCompleta, {login: usuarioCadastro, password: passwordCadastro})
+
+            usuarioCadastroInput.value = ""
+            passwordCadastroInput.value = ""
+
+            // Mostrando alerta de cadastrado com sucesso
+            exibirAlerta(".alert-modal-cadastro", "Usuário cadastrado com sucesso!",
+                ["show", "alert-success"], ["d-none", "alert-danger"], 2000
+            )
+            
+            /*  
+
+            // Código para fechar a modal:
+            // Pegamos o índice da instância atual da modal
+            let modalCadastro = bootstrap.Modal.getInstance(
+                document.querySelector("#modalCadastro")
+            )
+            modalCadastro.hide()
+
+            */
+
+        } catch (err) {
+            exibirAlerta(".alert-modal-cadastro", "Erro ao cadastrar usuário",
+                ["show", "alert-danger"], ["d-none", "alert-success"], 2000
+            )
+        }
     } else {
-        let alert = document.querySelector(".alert-modal-cadastro")
-        alert.innerHTML = "Preencha todos os campos."
-        alert.classList.add("show", "alert-danger")
-        alert.classList.remove("d-none")
-        
-        setTimeout(() => {
-            alert.classList.remove("show")
-            alert.classList.add('d-none')
-        }, 3000)
+        exibirAlerta(".alert-modal-cadastro", "Preencha todos os campos",
+            ["show", "alert-danger"], ["d-none", "alert-success"], 2000
+        )
+    }
+}
+
+// Seletor = identificador do elemento que será utilizado para exibir o alerta na árvore DOM do HTML
+// innerHTML = conteúdo adicionado dentro do elemento selecionado
+function exibirAlerta(selector, innerHTML, classesToAdd, classesToRemove, timeout) {
+    // Identificamos o elemento da árvore DOM que queremos alterar
+    let alert = document.querySelector(selector)
+
+    // Adicionamos o texto ao elemento selecionado
+    alert.innerHTML = innerHTML
+
+    // ... -> Operador spread: recebe uma lista ou string e e adiciona cada elemento um a um
+    alert.classList.add(...classesToAdd)
+    alert.classList.remove(...classesToRemove)
+
+    setTimeout(() => {
+        alert.classList.remove("show")
+        alert.classList.add("d-none")
+    }, timeout)
+}
+
+const fazerLogin = async () => {
+    let usuarioLoginInput = document.querySelector("#usuarioLoginInput")
+    let passwordLoginInput = document.querySelector("#passwordLoginInput")
+
+    let usuarioLogin = usuarioLoginInput.value
+    let passwordLogin = passwordLoginInput.value
+
+    if(usuarioLogin && passwordLogin) {
+        try {
+            const loginEndpoint = "/login"
+            const URLCompleta = `${protocolo}${baseURL}${loginEndpoint}`
+            
+            const response = await axios.post(
+                URLCompleta, {login: usuarioLogin, password: passwordLogin}
+            )
+
+            usuarioLoginInput.value = ""
+            passwordLoginInput.value = ""
+
+            exibirAlerta(".alert-modal-login", "Login efetuado com sucesso!",
+                ["show", "alert-success"], ["d-none", "alert-danger"], 2000
+            )
+
+            const cadastrarFilmeButton = document.querySelector("#cadastrarFilmeButton")
+
+            cadastrarFilmeButton.disabled = false
+
+        } catch {
+            exibirAlerta(".alert-modal-login", "Erro ao fazer login",
+                ["show", "alert-danger"], ["d-none", "alert-success"], 2000
+            )
+        }
+    } else {
+        exibirAlerta(".alert-modal-login", "Preencha todos os campos",
+            ["show", "alert-danger"], ["d-none", "alert-success"], 2000
+        )
     }
 }
